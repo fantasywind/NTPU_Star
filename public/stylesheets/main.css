@@ -1,0 +1,207 @@
+html, body {
+	height: 100%;
+}
+.stnum {
+	position: absolute;
+	top:2px;
+	right:2px;
+}
+div#container-login {
+	width: 600px;
+	margin: 150px auto;
+}
+div#container-login-table-container {
+	border-radius: 4px;
+	background: #EEE;
+	height: 240px;
+	box-shadow: 1px 1px 2px #777;
+}
+div#container-login table {
+	width: 300px;
+	margin: 0 auto;
+}
+td#login-submit {
+	text-align: right;
+}
+div#topbar {
+	margin: 5px auto 10px auto;
+}
+div#container {
+	margin: 0 auto;
+	width: 996px;
+}
+div.scoreboard {
+	background: #FBFBFB;
+	border: 1px solid #777;
+	box-shadow: 1px 1px 2px #555;
+	border-radius: 4px;
+	margin-bottom: 30px;
+}
+div.scoreboard table {
+	width: 100%;
+}
+div.login-title {
+	text-align: center;
+}
+div.footer {
+	margin-top: 50px;
+	padding-bottom: 10px;
+	width: 996px;
+}
+footer {
+	text-align: center;
+}
+div.footer-login-page {
+	bottom: 0;
+	position: fixed;
+}
+div.footer-login {
+	margin: 12px 0 !important;
+}
+div.footer-login a{
+	display: inline-block;
+}
+span.footer-text {
+	margin: 0 24px 0 80px;
+	font-size: 20px;
+}
+div.footer-login span.footer-text {
+	margin: 0 24px 0 0;
+}
+img.logo {
+	height: 50px;
+}
+a.ball-selector {
+	display: inline-block;
+	margin: 0 6px;
+	background: #F0F0F0;
+	padding: 6px 8px;
+	border-radius: 2px;
+	cursor: pointer;
+}
+a.ball-selector img {
+	width: 60px;
+	height: 60px;
+}
+span.ball-description {
+	font-family: 'Fruktur', cursive;
+	display: inline-block;
+	margin: 0 15px;
+	color: #222;
+	font-size: 28px;
+	position: relative;
+	top: 6px;
+	left: 4px;
+}
+#balls a.active {
+	background: #2fa4e7;
+	box-shadow: 1px 1px 2px #333;
+}
+#balls a.active span {
+	color: #FFF;
+}
+.players-list {
+	margin-top: 18px;
+}
+.player-box {
+	cursor: pointer;
+	display: block;
+	float: left;
+	width: 90px;
+	height: 110px;
+	text-align: center;
+	margin-right: 12px;
+	margin-bottom: 8px;
+}
+.player-img {
+	width: 80px;
+	height: 80px;
+	border: 1px solid #555;
+	box-shadow: 1px 1px 2px #333;
+	border-radius: 4px;
+	margin-bottom: 4px;
+}
+.player-name {
+	font-size: 105%;
+}
+.avatar {
+	float:right;
+}
+.vote-type {
+	padding: 8px;
+	border-bottom: 1px solid #EEE;
+}
+.vote-type img {
+	width: 60px;
+	height: 60px;
+}
+.voter {
+	cursor: pointer;
+	float: left;
+	display: block;
+	padding: 8px;
+	margin: 0 4px;
+	overflow: hidden;
+	max-height: 75px;
+	background: #DDD;
+	box-shadow: 1px 1px 2px #AAA;
+}
+.voter .player-info img {
+	width: 60px;
+	height: 60px;
+}
+.voter .player-info p {
+	text-align: center;
+	color:#222;
+	margin: 0;
+}
+.player-voted {
+	width: 60px;
+	height: 60px;
+	position: relative;
+	top: -80px;
+	background: url(/images/voted.png);
+	background-repeat: no-repeat;
+	background-position: 6px 5px;
+	display: none;
+}
+.player-voted.active {
+	display: block;
+}
+.voter.active {
+	background: #317eac;
+}
+.voter.active p {
+	color:#FEFEFE;
+	font-weight: normal;
+}
+tr.red td {
+	background:#f2dede;
+}
+.red {
+	color: red;
+}
+table .title {
+	font-size: 150%;
+	padding: 8px 0;
+}
+.scoreboard th {
+	color: #FEFEFE;
+	font-weight: normal;
+	background: #45aeea;
+	text-shadow: 1px 1px 1px black
+}
+.scoreboard td {
+	text-align: center;
+}
+.coop-union {
+	text-align: center;
+	padding-left: 100px;
+}
+.coop-union.login {
+	padding-left: 0;
+	text-align: left;
+}
+.coop-union img.logo {
+	margin: 0 12px;
+}

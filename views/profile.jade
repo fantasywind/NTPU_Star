@@ -1,0 +1,82 @@
+extends layout
+
+block content
+	div#container
+		div.row-fluid
+			h1 球員資料
+			hr
+		div.row-fluid#balls
+			if ball == "basketball"
+				a.ball-selector.active
+					img(src='/images/2008EMCUPbasketballc.jpg')
+					span.ball-description Basketball
+			else
+				a.ball-selector(href='/players/basketball')
+					img(src='/images/2008EMCUPbasketball.jpg')
+					span.ball-description Basketball
+			if ball == "volleyball"
+				a.ball-selector.active
+					img(src='/images/2008EMCUPvolleyballc.jpg')
+					span.ball-description Volleyball
+			else
+				a.ball-selector(href='/players/volleyball')
+					img(src='/images/2008EMCUPvolleyball.jpg')
+					span.ball-description Volleyball
+			if ball == "softball"
+				a.ball-selector.active
+					img(src='/images/2008EMCUPsoftballc.jpg')
+					span.ball-description Softball
+			else
+				a.ball-selector(href='/players/softball')
+					img(src='/images/2008EMCUPsoftball.jpg')
+					span.ball-description Softball
+		if ball == "basketball"
+			div#basketball.row-fluid.players-list
+				if players.basketball
+					each player, i in players.basketball
+						a.player-box(data-fancybox-type="iframe", href="/player/#{player.id}")
+							div
+								img.player-img(src='#{player.avatar}')
+								span.player-name #{player.name}
+		if ball == "volleyball"
+			h3 男排
+			div#volleyball.row-fluid.players-list
+				if players.volleyballb
+					each player, i in players.volleyballb
+						a.player-box(data-fancybox-type="iframe", href="/player/#{player.id}")
+							div
+								img.player-img(src='#{player.avatar}')
+								span.player-name #{player.name}
+			h3 女排
+			div#volleyball.row-fluid.players-list
+				if players.volleyballg
+					each player, i in players.volleyballg
+						a.player-box(data-fancybox-type="iframe", href="/player/#{player.id}")
+							div
+								img.player-img(src='#{player.avatar}')
+								span.player-name #{player.name}
+		if ball == "softball"
+			div#softball.row-fluid.players-list
+				if players.softball
+					each player, i in players.softball
+						a.player-box(data-fancybox-type="iframe", href="/player/#{player.id}")
+							div
+								img.player-img(src='#{player.avatar}')
+								span.player-name #{player.name}
+		script(src='/javascripts/players.js')
+		div.row-fluid.footer
+			footer.span12
+				span.footer-text 主辦單位
+				a(href='http://facebook.com/NTPUSU', title='國立臺北大學學生自治會')
+					img.logo(src='/images/sulogo.png', target='_blank')
+				span.footer-text 協辦單位
+				a(href='http://www.shockpaper.com', title='Shock! 三峽客地方媒體')
+					img.logo(src='/images/shocklogo.png', target='_blank')
+		div.row-fluid.footer
+			div.span12.coop-union 合作聯盟
+				img.logo(src='/images/softball-un.png')
+				| 國立臺北大學壘球聯盟
+				img.logo(src='/images/basketball-un.png')
+				| 國立臺北大學籃球聯盟
+				img.logo(src='/images/volleyball-un.png')
+				| 國立臺北大學排球聯盟

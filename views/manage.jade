@@ -1,0 +1,266 @@
+extends layout
+
+block content
+	div#container
+		div.row-fluid
+			h1 球員名單管理系統
+			hr
+		div.row-fluid
+			div.span12.btn-group
+				a.btn.btn-primary(role='button', data-toggle='modal', href='#add-player') 新增球員
+		div.row-fluid
+			div.span12
+				h3 球員列表
+		div#player-list.row-fluid
+			if players.basketball
+				div#basketball-players.span4
+					h5 籃球
+					each player, i in players.basketball
+						a.player-box
+							div
+								img.player-img(src='#{player.avatar}')
+								span.player-name #{player.name}
+			if players.volleyballb || players.volleyballg
+				div#volleyball-players.span4
+					if players.volleyballb
+						div.row-fluid
+							div.span12
+								h5 男排
+								each player, i in players.volleyballb
+									a.player-box
+										div
+											img.player-img(src='#{player.avatar}')
+											span.player-name #{player.name}
+					if players.volleyballg
+						div.row-fluid
+							div.span12
+								h5 女排
+								each player, i in players.volleyballg
+									a.player-box
+										div
+											img.player-img(src='#{player.avatar}')
+											span.player-name #{player.name}
+			if players.softball
+				div#softball-players.span4
+					h5 壘球
+					each player, i in players.softball
+						a.player-box
+							div
+								img.player-img(src='#{player.avatar}')
+								span.player-name #{player.name}
+		div#add-player.modal.hide.fade
+			div.modal-header
+				button.close(type='button', data-dismiss='modal', aria-hidden='true') x
+				h3 新增球員
+			div.modal-body
+				ul#player-catagory.nav.nav-tabs
+					li.active
+						a(href='#basketball', data-toggle='tab') 籃球
+					li
+						a(href='#volleyballb', data-toggle='tab') 男排
+					li
+						a(href='#volleyballg', data-toggle='tab') 女排
+					li
+						a(href='#softball', data-toggle='tab') 壘球
+				div.tab-content
+					div.tab-pane.active(id='basketball')
+						form#form-basketball.form-horizontal
+							input(type='hidden', name='ball', value='basketball')
+							fieldset
+								div.control-group
+									label.control-label(for='player-name') 球員姓名
+									div.controls
+										input(type='text', name='player-name')
+								div.control-group
+									label.control-label(for='player-department') 系級
+									div.controls
+										input(type='text', name='player-department')
+										p.helper-block 請使用兩字系名加年級 (Ex. 金融三, 財法二)
+								div.control-group
+									label.control-label(for='player-position') 擅長位置
+									div.controls
+										select(name='player-position')
+											option(value='1') 控球後衛
+											option(value='2') 得分後衛
+											option(value='3') 小前鋒
+											option(value='4') 大前鋒
+											option(value='5') 中鋒
+								div.control-group
+									label.control-label(for='player-years') 球齡
+									div.controls
+										input(type='text', name='player-years')
+										p.helper-block 請使用阿拉伯數字整數 (Ex. 1, 2)
+								h4 季賽成績
+								div.control-group
+									label.control-label(for='player-score') 平均得分
+									div.controls
+										input(type='text', name='player-score')
+								div.control-group
+									label.control-label(for='player-rebound') 籃板數
+									div.controls
+										input(type='text', name='player-rebound')
+								div.control-group
+									label.control-label(for='player-assist') 助攻
+									div.controls
+										input(type='text', name='player-assist')
+								div.control-group
+									label.control-label(for='player-block') 阻攻
+									div.controls
+										input(type='text', name='player-block')
+								div.control-group
+									label.control-label(for='player-steal') 抄截
+									div.controls
+										input(type='text', name='player-steal')
+								h4 照片
+						form#form-basketball-pic.picform.form-horizontal(target='pic-uploader', method='post', enctype='multipart/form-data')
+							div.control-group
+									label.control-label(for='player-picture') 球員照片
+									div.controls
+										input(type='file', name='player-picture')
+					div.tab-pane(id='volleyballb')
+						form#form-volleyballb.form-horizontal
+							input(type='hidden', name='ball', value='volleyballb')
+							fieldset
+								div.control-group
+									label.control-label(for='player-name') 球員姓名
+									div.controls
+										input(type='text', name='player-name')
+								div.control-group
+									label.control-label(for='player-department') 系級
+									div.controls
+										input(type='text', name='player-department')
+										p.helper-block 請使用兩字系名加年級 (Ex. 金融三, 財法二)
+								div.control-group
+									label.control-label(for='player-position') 參選位置
+									div.controls
+										select(name='player-position')
+											option(value='1') 主攻手（攻擊手）
+											option(value='2') 攔中手
+											option(value='3') 舉球手
+											option(value='4') 自由球員
+								div.control-group
+									label.control-label(for='player-years') 球齡
+									div.controls
+										input(type='text', name='player-years')
+										p.helper-block 請使用阿拉伯數字整數 (Ex. 1, 2)
+								h4 其他資料
+								div.control-group
+									label.control-label(for='player-special') 特殊事蹟
+									div.controls
+										input(type='text', name='player-special')
+								div.control-group
+									label.control-label(for='player-award') 得獎記錄
+									div.controls
+											input(type='text', name='player-award')
+						form#form-volleyball-pic.picform.form-horizontal(target='pic-uploader', method='post', enctype='multipart/form-data')
+							div.control-group
+									label.control-label(for='player-picture') 球員照片
+									div.controls
+										input(type='file', name='player-picture')
+					div.tab-pane(id='volleyballg')
+						form#form-volleyballg.form-horizontal
+							input(type='hidden', name='ball', value='volleyballg')
+							fieldset
+								div.control-group
+									label.control-label(for='player-name') 球員姓名
+									div.controls
+										input(type='text', name='player-name')
+								div.control-group
+									label.control-label(for='player-department') 系級
+									div.controls
+										input(type='text', name='player-department')
+										p.helper-block 請使用兩字系名加年級 (Ex. 金融三, 財法二)
+								div.control-group
+									label.control-label(for='player-position') 參選位置
+									div.controls
+										select(name='player-position')
+											option(value='1') 主攻手（攻擊手）
+											option(value='3') 舉球手
+								div.control-group
+									label.control-label(for='player-years') 球齡
+									div.controls
+										input(type='text', name='player-years')
+										p.helper-block 請使用阿拉伯數字整數 (Ex. 1, 2)
+								h4 其他資料
+								div.control-group
+									label.control-label(for='player-special') 特殊事蹟
+									div.controls
+										input(type='text', name='player-special')
+								div.control-group
+									label.control-label(for='player-award') 得獎記錄
+									div.controls
+											input(type='text', name='player-award')
+						form#form-volleyball-pic.picform.form-horizontal(target='pic-uploader', method='post', enctype='multipart/form-data')
+							div.control-group
+									label.control-label(for='player-picture') 球員照片
+									div.controls
+										input(type='file', name='player-picture')
+					div.tab-pane(id='softball')
+						form#form-softball.form-horizontal
+							input(type='hidden', name='ball', value='softball')
+							fieldset
+								div.control-group
+									label.control-label(for='player-name') 球員姓名
+									div.controls
+										input(type='text', name='player-name')
+								div.control-group
+									label.control-label(for='player-department') 系級
+									div.controls
+										input(type='text', name='player-department')
+										p.helper-block 請使用兩字系名加年級 (Ex. 金融三, 財法二)
+								div.control-group
+									label.control-label(for='player-position') 參選位置
+									div.controls
+										select(name='player-position')
+											option(value='1') 投手
+											option(value='2') 內野手
+											option(value='3') 外野手
+								div.control-group
+									label.control-label(for='player-years') 球齡
+									div.controls
+										input(type='text', name='player-years')
+										p.helper-block 請使用阿拉伯數字整數 (Ex. 1, 2)
+								h4 季賽成績 (野手)
+								div.control-group
+									label.control-label(for='player-ab') 打數
+									div.controls
+										input(type='text', name='player-ab')
+								div.control-group
+									label.control-label(for='player-hit') 安打
+									div.controls
+											input(type='text', name='player-hit')
+								div.control-group
+									label.control-label(for='player-hr') 全壘打
+									div.controls
+											input(type='text', name='player-hr')
+								h4 季賽成績 (投手)
+								div.control-group
+									label.control-label(for='player-win') 勝投
+									div.controls
+											input(type='text', name='player-win')
+								h4 照片
+						form#form-softball-pic.picform.form-horizontal(target='pic-uploader', method='post', enctype='multipart/form-data')
+							div.control-group
+									label.control-label(for='player-picture') 球員照片
+									div.controls
+										input(type='file', name='player-picture')
+			div.modal-footer
+				button#add-submit.btn.btn-primary 新增
+		iframe(style='display:none;', id='pic-uploader', name='pic-uploader')
+		script(src='/javascripts/manage.js')
+		div.row-fluid.footer
+			footer.span12
+				span.footer-text 主辦單位
+				a(href='http://facebook.com/NTPUSU', title='國立臺北大學學生自治會')
+					img.logo(src='/images/sulogo.png', target='_blank')
+				span.footer-text 協辦單位
+				a(href='http://www.shockpaper.com', title='Shock! 三峽客地方媒體')
+					img.logo(src='/images/shocklogo.png', target='_blank')
+		div.row-fluid.footer
+			div.span12.coop-union 合作聯盟
+				img.logo(src='/images/softball-un.png')
+				| 國立臺北大學壘球聯盟
+				img.logo(src='/images/basketball-un.png')
+				| 國立臺北大學籃球聯盟
+				img.logo(src='/images/volleyball-un.png')
+				| 國立臺北大學排球聯盟

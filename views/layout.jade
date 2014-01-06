@@ -1,0 +1,72 @@
+doctype 5
+html
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=uft-8')
+		title= title
+		script(src='/javascripts/jquery-1.9.0.min.js')
+		script(src='/javascripts/bootstrap.min.js')
+		script(type="text/javascript", src="/javascripts/jquery.fancybox.pack.js?v=2.1.4")
+		script var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-38005216-1"]);_gaq.push(["_trackPageview"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Fruktur')
+		link(rel="stylesheet", href="/javascripts/jquery.fancybox.css?v=2.1.4", type="text/css", media="screen")
+		link(rel='stylesheet', href='/stylesheets/main.css')
+		body
+			if type != ""
+				p.stnum
+					span 學號: #{stnum}
+			div.container
+				div.row
+					div.span12
+						div.navbar#topbar
+							div.navbar-inner
+								a.brand(href='/') 明星對抗賽
+								ul.nav
+									if page == "index"
+										li.active
+											a(href='/') 活動首頁
+									else
+										li
+											a(href='/') 活動首頁
+									if page == "players"
+										li.active
+											a(href='/players') 球員資料
+									else
+										li
+											a(href='/players') 球員資料
+									if type != ""
+										if page == "vote"
+											li.active
+												a(href='/vote') 投票系統
+										else
+											li
+												a(href='/vote') 投票系統
+									if page == "info"
+										li.active
+											a(href='/info') 活動辦法
+									else
+										li
+											a(href='/info') 活動辦法
+									if page == "forum"
+										li.active
+											a(href='/forum') 運動小學堂
+									else
+										li
+											a(href='/forum') 運動小學堂
+									li
+										a(href='http://facebook.com/NTPUSU') 學生會粉絲團
+									if type == ""
+										li
+											a(href='/login') 登入投票系統
+									if type == "admin"
+										if page == "manage"
+											li.active
+												a(href='/manage') 管理球員名單
+										else
+											li
+												a(href='/manage') 管理球員名單
+									if type != ""
+										li
+											a(href='/logout') 登出系統
+			block content

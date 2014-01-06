@@ -1,0 +1,86 @@
+!!! 5
+html
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=uft-8')
+		title= title
+		script(src='/javascripts/jquery-1.9.0.min.js')
+		script(src='/javascripts/bootstrap.min.js')
+		script(src='/javascripts/login_page.js')
+		script var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-38005216-1"]);_gaq.push(["_trackPageview"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='/stylesheets/main.css')
+	body
+		div#container-login
+			div.row-fluid
+				div.span12(style='text-align:center;')
+					a.login-title(href='/')
+						h1 2013 紅藍明星對抗賽
+			div.row-fluid
+				div.span12
+					div#container-login-table-container
+						form(method='post', action='/login')
+							table
+								tbody
+									tr
+										td(colspan='2') 
+											h3 登入系統
+									if msg == "empty"
+										tr
+											td(colspan='2', style='color:red;') 帳號密碼不得為空
+									if msg == "incorrect"
+										tr
+											td(colspan='2', style='color:red;') 帳號密碼錯誤
+									tr
+										td 學號
+										td 
+											input(type='text', tabindex='1', name='account')
+									tr
+										td 投票密碼
+										td
+											input(type='password', tabindex='2', name='password')
+									tr
+										td#login-submit(colspan='2')
+											div.btn-group
+												a.btn(href='#get-account', role='button', data-toggle='modal') 取得密碼
+												button.btn.btn-primary(type='submit') 登入
+			div#get-account.modal.hide.fade
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') x
+					h3 取得投票密碼
+				div.modal-body
+					div.well
+						h5 我們將寄信至臺北大學學生信箱 (s學號@webmail.ntpu.edu.tw)
+						p 請點擊信中驗證碼設定密碼以完成投票程序
+					form
+						fieldset
+							p
+								label 學號 ( 不含s ): 
+							p
+								input(id='stnum', type='text')
+							p
+								span#form-status
+							p
+								button#get-pass.btn.btn-primary.btn-large 取得密碼
+							p(style='text-align:right;')
+								a.btn(href='http://webmail.ntpu.edu.tw', target='_blank')
+									i.icon-envelope
+									|  臺北大學信箱登入
+				div.modal-footer
+			div.row-fluid.footer
+				div.footer-login
+					span.footer-text 主辦單位
+					a(href='http://facebook.com/NTPUSU', title='國立臺北大學學生自治會')
+						img.logo(src='/images/sulogo.png', target='_blank')
+				div.footer-login
+					span.footer-text 協辦單位
+					a(href='http://www.shockpaper.com', title='Shock! 三峽客地方媒體')
+						img.logo(src='/images/shocklogo.png', target='_blank')
+			div.row-fluid.footer
+				div.span12.coop-union.login 合作聯盟
+					img.logo(src='/images/softball-un.png')
+					| 國立臺北大學壘球聯盟
+					img.logo(src='/images/basketball-un.png')
+					| 國立臺北大學籃球聯盟
+					img.logo(src='/images/volleyball-un.png')
+					| 國立臺北大學排球聯盟

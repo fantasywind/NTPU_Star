@@ -1,0 +1,209 @@
+extends layout
+
+block content
+	div#container
+		div.row-fluid
+			h1 投票系統
+			hr
+		div.row-fluid
+			div.span12.vote-type
+				img(src='/images/2008EMCUPbasketballc.jpg')
+				span.ball-description Basketball
+		div.row-fluid
+			table.table
+				thead
+					tr
+						th(width='80') 項目
+						th(width='50') 票數
+						th 候選人清單
+				tbody
+					tr(data-allow='10', data-type='basket')
+						td
+							p 籃球
+						td 
+							span 0 
+							| / 10
+						td
+							if candidates.basketball['basket']
+								each player, i in candidates.basketball['basket']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+		div.row-fluid
+			div.span12.vote-type
+				img(src='/images/2008EMCUPvolleyballc.jpg')
+				span.ball-description Volleyball
+		div.row-fluid
+			h3 男排
+			table.table
+				thead
+					tr
+						th(width='80') 項目
+						th(width='50') 票數
+						th 候選人清單
+				tbody
+					tr(data-allow='2', data-type='batt')
+						td
+							p 主攻手
+						td
+							span 0 
+							| / 2
+						td
+							if candidates.volleyballb['batt']
+								each player, i in candidates.volleyballb['batt']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+					tr(data-allow='2', data-type='bmid')
+						td
+							p 欄中手
+						td
+							span 0 
+							| / 2
+						td
+							if candidates.volleyballb['bmid']
+								each player, i in candidates.volleyballb['bmid']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+					tr(data-allow='2', data-type='bset')
+						td
+							p 舉球員
+						td
+							span 0 
+							| / 2
+						td
+							if candidates.volleyballb['bset']
+								each player, i in candidates.volleyballb['bset']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+					tr(data-allow='1', data-type='bfree')
+						td
+							p 自由球員
+						td
+							span 0 
+							| / 1
+						td
+							if candidates.volleyballb['bfree']
+								each player, i in candidates.volleyballb['bfree']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+			h3 女排
+			table.table
+				thead
+					tr
+						th(width='80') 項目
+						th(width='50') 票數
+						th 候選人清單
+				tbody
+					tr(data-allow='3', data-type='gatt')
+						td
+							p 攻擊手
+						td
+							span 0 
+							| / 3
+						td
+							if candidates.volleyballg['gatt']
+								each player, i in candidates.volleyballg['gatt']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+					tr(data-allow='2', data-type='gset')
+						td
+							p 舉球員
+						td
+							span 0 
+							| / 2
+						td
+							if candidates.volleyballg['gset']
+								each player, i in candidates.volleyballg['gset']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+		div.row-fluid
+			div.span12.vote-type
+				img(src='/images/2008EMCUPsoftballc.jpg')
+				span.ball-description Softball
+		div.row-fluid
+			table.table
+				thead
+					tr
+						th(width='80') 項目
+						th(width='50') 票數
+						th 候選人清單
+				tbody
+					tr(data-allow='2', data-type='p')
+						td 投手
+						td 
+							span 0 
+							| / 2
+						td
+							if candidates.softball['p']
+								each player, i in candidates.softball['p']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+					tr(data-allow='6', data-type='if')
+						td 內野手
+						td 
+							span 0 
+							| / 6
+						td
+							if candidates.softball['if']
+								each player, i in candidates.softball['if']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+					tr(data-allow='4', data-type='of')
+						td 外野手
+						td 
+							span 0 
+							| / 4
+						td
+							if candidates.softball['of']
+								each player, i in candidates.softball['of']
+									div.voter(data-player-id='#{player.id}')
+										div.player-info
+											img(src='#{player.avatar}')
+											p #{player.name}
+										div.player-voted
+		div.row-fluid
+			div.span12.btn-toolbar(style='text-align: right;')
+				a#submit-vote.btn.btn-primary 送出投票
+		script(src='/javascripts/vote.js')
+		div.row-fluid.footer
+			footer.span12
+				span.footer-text 主辦單位
+				a(href='http://facebook.com/NTPUSU', title='國立臺北大學學生自治會')
+					img.logo(src='/images/sulogo.png', target='_blank')
+				span.footer-text 協辦單位
+				a(href='http://www.shockpaper.com', title='Shock! 三峽客地方媒體')
+					img.logo(src='/images/shocklogo.png', target='_blank')
+		div.row-fluid.footer
+			div.span12.coop-union 合作聯盟
+				img.logo(src='/images/softball-un.png')
+				| 國立臺北大學壘球聯盟
+				img.logo(src='/images/basketball-un.png')
+				| 國立臺北大學籃球聯盟
+				img.logo(src='/images/volleyball-un.png')
+				| 國立臺北大學排球聯盟

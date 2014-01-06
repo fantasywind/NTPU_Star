@@ -1,0 +1,8 @@
+{
+  "connObject": {
+    "host": "localhost",
+    "user": "__username__",
+    "password": "__password__",
+    "database": "ntpu_star"
+  }
+}

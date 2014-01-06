@@ -1,0 +1,78 @@
+doctype 5
+html
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=uft-8')
+		meta(property="og:title", content="2013 &#x81fa;&#x5317;&#x5927;&#x5b78;&#x7d05;&#x85cd;&#x660e;&#x661f;&#x5c0d;&#x6297;&#x8cfd;")
+		meta(property="og:type", content="sport")
+		meta(property="og:url", content="http://ntpustar.shockpaper.com")
+		meta(property="og:image", content="")
+		meta(property="og:site_name", content="2013 &#x81fa;&#x5317;&#x5927;&#x5b78;&#x7d05;&#x85cd;&#x660e;&#x661f;&#x5c0d;&#x6297;&#x8cfd;")
+		meta(property="fb:admins", content="1707580124")
+		title= title
+		script(src='/javascripts/jquery-1.9.0.min.js')
+		script(src='/javascripts/bootstrap.min.js')
+		script var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-38005216-1"]);_gaq.push(["_trackPageview"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Fruktur')
+		link(rel='stylesheet', href='/stylesheets/main.css')
+		body(style='background:#f9f9f9;width:400px;')
+			div(style='background:#f9f9f9;width:400px;overflow:hidden;scroll:none;')
+				h1 球員資料 (#{player.ball})
+				hr
+				div.player-box.avatar
+					img(src="#{player.avatar}")
+				h4 基本資料
+				p 姓名: #{player.name}
+				p 位置: #{player.position}
+				p 系級: #{player.department}
+				p 球齡: #{player.exp_years} 年
+				if player.type == "volleyballb" || player.type == "volleyballg"
+					h4 其他
+					p 得獎記錄: #{record.award}
+					p 特殊事蹟: #{record.special}
+				else
+					h4 本季戰績
+					if player.type == "basketball"
+						table.table
+							thead
+								tr
+									th 賽季
+									th 平均得分
+									th 籃板
+									th 助攻
+									th 阻攻
+									th 抄截
+							tbody
+								tr
+									td 2012
+									td #{record.score}
+									td #{record.rebound}
+									td #{record.assist}
+									td #{record.block}
+									td #{record.steal}
+					else
+						table.table
+							thead
+								tr
+									th 賽季
+									th 打數
+									th 打率
+									th 安打
+									th 全壘打
+									th 勝投
+							tbody
+								tr
+									td 2012
+									td #{record.ab}
+									td #{record.avg}
+									td #{record.hit}
+									td #{record.hr}
+									td #{record.win}
+					p 目前得票數： #{player.votes}
+					a.btn.btn-primary(href='/vote', target='_blank') 前往投票系統
+					h6 facebook 按讚投我一票
+					div.fb-like(data-href="http://ntpustar.shockpaper.com/player/#{player.id}", data-send="false", data-layout="button_count", data-width="450", data-show-faces="true", data-font="arial")
+				div#fb-root
+				script (function(e,a,f){var c,b=e.getElementsByTagName(a)[0];if(e.getElementById(f)){return}c=e.createElement(a);c.id=f;c.src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=140872669393174";b.parentNode.insertBefore(c,b)}(document,"script","facebook-jssdk"));
+				script(src='/javascripts/player.js')

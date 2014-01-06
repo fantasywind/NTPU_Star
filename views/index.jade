@@ -1,0 +1,198 @@
+extends layout
+
+block content 
+	div.container
+		div.row-fluid
+			div#title-box.span12.hero-unit
+				h1 2013 紅藍明星對抗賽
+				p 由臺北大學所精挑細選的選手們
+		div.row-fluid
+			h2.span7 初選戰況
+			if !vote_start
+				h2.pull-right 投票尚未開始
+			else
+				h2.pull-right 投票熱烈開跑
+		div.row-fluid
+			h6.span12(style='color:#777;text-align:right;') 每五分鐘更新票數，最後更新 #{update}
+		div.row-fluid
+			h4.span12 籃球
+		div.row-fluid
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 籃球 ( 1-5名 )
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['basket1']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 籃球 ( 6-10 名)
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['basket2']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 籃球 ( 11-15 名)
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['basket3']
+							tr
+								td #{name}
+								td #{vote.site}
+		div.row-fluid
+			h4.span12 排球
+		div.row-fluid
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 男排 （主攻手）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['batt']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 男排 （攔中手）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['bmid']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 男排 （舉球員）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['bset']
+							tr
+								td #{name}
+								td #{vote.site}
+		div.row-fluid
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 男排 （自由球員）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['bfree']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 女排 （攻擊手）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['gatt']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 女排 （舉球員）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['gset']
+							tr
+								td #{name}
+								td #{vote.site}
+		div.row-fluid
+			h4.span12 壘球
+		div.row-fluid
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 壘球 （投手）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['p']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 壘球 （內野手）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['if']
+							tr
+								td #{name}
+								td #{vote.site}
+			div.span4.scoreboard
+				table.table-hover
+					thead
+						tr
+							th.title(colspan='2') 壘球 （外野手）
+						tr
+							th 姓名
+							th 得票數
+					tbody
+						each vote, name in votes['of']
+							tr
+								td #{name}
+								td #{vote.site}
+		div.row-fluid.footer
+			footer.span12
+				span.footer-text 主辦單位
+				a(href='http://facebook.com/NTPUSU', title='國立臺北大學學生自治會')
+					img.logo(src='/images/sulogo.png', target='_blank')
+				span.footer-text 協辦單位
+				a(href='http://www.shockpaper.com', title='Shock! 三峽客地方媒體')
+					img.logo(src='/images/shocklogo.png', target='_blank')
+		div.row-fluid.footer
+			div.span12.coop-union 合作聯盟
+				img.logo(src='/images/softball-un.png')
+				| 國立臺北大學壘球聯盟
+				img.logo(src='/images/basketball-un.png')
+				| 國立臺北大學籃球聯盟
+				img.logo(src='/images/volleyball-un.png')
+				| 國立臺北大學排球聯盟
